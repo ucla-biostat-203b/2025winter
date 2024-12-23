@@ -44,7 +44,7 @@ Office hours:
 
 Computing skills and software tools for handling potentially big medical and public health data.
 
-See the schedule ([lec 82](https://ucla-biostat-203b.github.io/2025winter/schedule/schedule-lec82.html), [lec 1](https://ucla-biostat-203b.github.io/2025winter/schedule/schedule-lec1.html)) page for a tentative list of topics.
+See the schedule ([lec 1](https://ucla-biostat-203b.github.io/2025winter/schedule/schedule-lec1.html), [lec 82](https://ucla-biostat-203b.github.io/2025winter/schedule/schedule-lec82.html)) page for a tentative list of topics.
 
 ## Prerequisites
 

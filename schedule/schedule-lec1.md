@@ -10,7 +10,7 @@ BIOSTAT 203B tentative schedule and handouts (expect frequent updates)
 BruinLearn: <https://bruinlearn.ucla.edu/courses/198311>   
 Course announcements will be sent via BruinLearn. 
 
-Slack channel (required): fill out [this form](https://forms.gle/C1XEWru36GQ1x1ZS7) to join.  
+Slack channel (required): fill out [this form](https://forms.gle/mpuVdtiPrUrNdsaD9) to join.  
 
 Recommended readings:  
 
@@ -20,15 +20,15 @@ Recommended readings:
 * [_Happy Git with R_](http://happygitwithr.com) by Jenny Bryan.  
 * [_Quarto documentation_](https://quarto.org/docs/guide/).  
 * [_R Markdown: The Definitive Guide_](https://bookdown.org/yihui/rmarkdown/) by Yihui Xie, J.J. Allaire, and Garrett Grolemund.  
-* [_R for Data Science_](https://r4ds.hadley.nz/) by Hadley Wickham, Mine Çetinkaya-Rundel, and Garrett Grolemund.  
+* [_R for Data Science_ (2nd ed)](https://r4ds.hadley.nz/) by Hadley Wickham, Mine Çetinkaya-Rundel, and Garrett Grolemund.  
 * [_R Graphics Cookbook_](https://r-graphics.org) by Winston Chang.   
 * [_Building Web Apps with R Shiny_](https://debruine.github.io/shinyintro) by Lisa DeBruine.  
 * [_Tidy Modeling with R_](https://www.tmwr.org/) by Max Kuhn and Julia Silge.  
-* [_Advanced R_](https://adv-r.hadley.nz/) by Hadley Wickham.  
-* [_R Packages_](https://r-pkgs.org/) by Hadley Wickham and Jennifer Bryan.  
+* [_Advanced R_ (2nd ed)](https://adv-r.hadley.nz/) by Hadley Wickham.  
+* [_R Packages_ (2nd ed)](https://r-pkgs.org/) by Hadley Wickham and Jennifer Bryan.  
 * [_Rcpp For Everyone_](https://teuder.github.io/rcpp4everyone_en/) by Masaki E. Tsuda.  
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/ucla-biostat-203b/2024winter/main?urlpath=rstudio)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/ucla-biostat-203b/2025winter/main?urlpath=rstudio)
 
 | Week | Tuesday | Thursday | Homework |
 |:-----------|:------------|:------------|:------------|:------------|
