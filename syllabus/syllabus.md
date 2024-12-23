@@ -32,7 +32,7 @@ Office hours:
     Tomoki Okuno <tomokiokuno0528@ucla.edu>  
     Office hours: TBD 
 
-- Lec 80 (MDSH)
+- Lec 82 (MDSH)
 
     Parsa Jamshidian <jamshidian@ucla.edu>  
     Office hours: TBD
