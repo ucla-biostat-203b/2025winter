@@ -34,10 +34,10 @@ Office hours:
 
 - Lec 82 (MDSH)
 
-    Parsa Jamshidian <jamshidian@ucla.edu>  
+    Parsa Jamshidian (Mac user) <jamshidian@ucla.edu>  
     Office hours: TBD
 
-    Bowen Zhang <bowenzhangstats@ucla.edu>  
+    Bowen Zhang (Windows user) <bowenzhangstats@ucla.edu>  
     Office hours: TBD
 
 ## Course Description
