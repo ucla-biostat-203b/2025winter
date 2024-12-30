@@ -28,7 +28,7 @@ sessionInfo()
 - This html is rendered from `linux.qmd` on Linux Ubuntu 22.04 (jammy).  
     - Mac users can render `linux.qmd` directly. Some tools such as `tree` and `locate` need to be installed (follow the error messages). 
     
-    - Windows users need to install `Git for Windows` to render `linux.qmd` using Git Bash or install `WSL` (Windows Subsystem for Linux) to render `linux.qmd` using Ubuntu. Some tools such as `tree` and `locate` need to be installed (follow the error messages).  
+    - Windows users need to install `WSL` (Windows Subsystem for Linux) or `Git for Windows` (Git Bash) to render `linux.qmd`  to render `linux.qmd` using Ubuntu. Some tools such as `tree` and `locate` need to be installed (follow the error messages).
     
     - Both Mac and Windows users can also use Docker to render `linux.qmd` within a Ubuntu container. Details in Lab 3.
 
@@ -47,7 +47,11 @@ or similarly to WSL.
 
 :::  
 
-- In this lecture, most code chunks are `bash` commands instead of R code. 
+::: {.callout-tip}
+
+In this lecture, most code chunks are `bash` commands instead of R code. 
+
+:::
 
 ## Why Linux
 
@@ -72,7 +76,7 @@ Linux is _the_ most common platform for scientific computing and deployment of d
   <img src="./redhat_kills_centos.png" height="200" width="300">
 </p>
 
-- UCLA Hoffman2 cluster runs CentOS 7.9.2009 (as of 2024-01-01).
+- UCLA Hoffman2 cluster runs CentOS 7.9.2009 (as of 2025-01-01).
 
 - MacOS was originally derived from Unix/Linux (Darwin kernel). It is POSIX compliant. Most shell commands we review here apply to MacOS terminal as well. 
 
@@ -174,7 +178,7 @@ man ls | head -30
 
 - Upon log in, user is at his/her home directory.
 
-- `tree` command (if installed) displays directory structure.   
+- `tree` command (if installed, not POSIX standard) displays directory structure.   
 `tree -L levels` display levels directories deep.
 ```{bash, eval = Sys.info()['sysname'] != "Windows"}
 # display only directories in levels 1, 2 from root directory
@@ -267,7 +271,7 @@ id
 
 ### Find files
 
-- `locate` locates a file by name (need `mlocate` program installed, not POSIX standard):
+- `locate` locates a file by name (need `plocate` program installed, not POSIX standard):
 ```{bash, eval=F}
 locate linux.qmd
 ```
@@ -313,7 +317,7 @@ ls -l *.png
 
 - Regular expressions (regex) are a powerful tool to efficiently sift through large amounts of text: record linking, data cleaning, scraping data from website or other data-feed. 
 
-- We will learn more about regex in the [strings and regex](https://ucla-biostat-203b.github.io/2024winter/slides/09-strings/stringr.html) lecture.
+- We will learn more about regex in the [strings and regex](https://ucla-biostat-203b.github.io/2025winter/slides/09-strings/stringr.html) lecture.
 
 ## Work with text files
 
@@ -592,7 +596,7 @@ Replace above `[USERNAME]` by your account user name on the Linux machine and `[
 ssh huazhou@hoffman2.idre.ucla.edu
 ```
 
-- For Windows users, there are at least three ways: (1) (recommended) [Git Bash](https://git-scm.com/download/win) which is included in Git for Windows, (2) (not recommended) [PuTTY](http://www.putty.org) program (free), or (3) (highly recommended)  use WSL for Windows to install a full fledged Linux system within Windows.
+- For Windows users, there are at least three ways: (1) (recommended)  use WSL for Windows to install a full fledged Linux system within Windows, (2) [Git Bash](https://git-scm.com/download/win) which is included in Git for Windows, or (3) (not recommended) [PuTTY](http://www.putty.org) program (free).
 
 ### Advantages of keys over password
 
@@ -620,7 +624,7 @@ ssh huazhou@hoffman2.idre.ucla.edu
 
 - _Private key_. Put on your own computer. Consider this as the actual key in your pocket; **never give private keys to others**.  
 
-{{< video https://www.youtube.com/embed/1kJaLt4Wa30 >}}
+{{< video https://youtu.be/1kJaLt4Wa30?t=86 >}}
 
 - Messages from server to your computer is encrypted with your public key. It can only be decrypted using your private key.
 
@@ -688,7 +692,7 @@ scp [USERNAME]@[IP_ADDRESS]:/[PATH_TO_FILE] [PATH_TO_LOCAL_FOLDER]
 
 - `sftp` is FTP via SSH.
 
-- `Globus` is GUI program for securely transferring files between machines. To use Globus you will have to go to <https://www.globus.org/> and login through UCLA by selecting your existing organizational login as UCLA. Then you will need to download their Globus Connect Personal software, then set your laptop as an endpoint. Very detailed instructions can be found at <https://www.hoffman2.idre.ucla.edu/file-transfer/globus/>.
+- `Globus` is GUI program for securely transferring files between machines. To use Globus you will have to go to <https://www.globus.org/> and login through UCLA by selecting your existing organizational login as UCLA. Then you will need to download their Globus Connect Personal software, then set your laptop as an endpoint. Very detailed instructions can be found at <https://www.hoffman2.idre.ucla.edu/Using-H2/Data-transfer.html#globus>.
 
 - GUIs for Windows (WinSCP) or Mac (Cyberduck).
 
@@ -722,7 +726,7 @@ source("script.R")
 
 ### Batch mode
 
-- Demo script [`meanEst.R`](https://raw.githubusercontent.com/ucla-biostat-203b/2024winter/master/slides/02-linux/meanEst.R) implements an (terrible) estimator of mean
+- Demo script [`meanEst.R`](https://raw.githubusercontent.com/ucla-biostat-203b/2025winter/master/slides/02-linux/meanEst.R) implements an (terrible) estimator of mean
 $$
   {\widehat \mu}_n = \frac{\sum_{i=1}^n x_i 1_{i \text{ is prime}}}{\sum_{i=1}^n 1_{i \text{ is prime}}}.
 $$
@@ -791,7 +795,7 @@ eval(parse(text = "x=3"))
 print(x)
 ```
 
-- [`runSim.R`](https://raw.githubusercontent.com/ucla-biostat-203b/2024winter/master/slides/02-linux/runSim.R) has components: (1) **command argument parser**, (2) method implementation, (3) data generator with unspecified parameter `n`, and (4) estimation based on generated data.
+- [`runSim.R`](https://raw.githubusercontent.com/ucla-biostat-203b/2025winter/master/slides/02-linux/runSim.R) has components: (1) **command argument parser**, (2) method implementation, (3) data generator with unspecified parameter `n`, and (4) estimation based on generated data.
 ```{bash}
 #| echo: false
 cat runSim.R
@@ -850,7 +854,7 @@ R in conjunction with `nohup` (or `screen`) can be used to orchestrate a large s
 - Python in many ways makes a better _glue_.
 
 - Suppose we have 
-    - [`runSim.R`](https://raw.githubusercontent.com/ucla-biostat-203b/2024winter/master/slides/02-linux/runSim.R) which runs a simulation based on command line argument `n`.  
+    - [`runSim.R`](https://raw.githubusercontent.com/ucla-biostat-203b/2025winter/master/slides/02-linux/runSim.R) which runs a simulation based on command line argument `n`.  
     - A large collection of `n` values that we want to use in our simulation study.  
     - Access to a server with 128 cores.  
 How to parallelize the job?    
@@ -859,7 +863,7 @@ How to parallelize the job?
 
 - Option 2 (smarter): automate calls using R and `nohup`. 
 
-- Let's demonstrate using the script [autoSim.R](https://raw.githubusercontent.com/ucla-biostat-203b/2024winter/master/slides/02-linux/autoSim.R)
+- Let's demonstrate using the script [autoSim.R](https://raw.githubusercontent.com/ucla-biostat-203b/2025winter/master/slides/02-linux/autoSim.R)
 ```{bash}
 cat autoSim.R
 ```
