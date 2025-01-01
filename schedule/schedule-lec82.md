@@ -35,7 +35,7 @@ Recommended readings:
 | 1 | Sat, [1/11](https://ucla-biostat-203b.github.io/2025winter/biostat203bwinter2024lec82/2025/01/11/lec82.html) | 1pm-4:20pm | CHS 43-105 | introduction and course logistics \[slides: [qmd](https://raw.githubusercontent.com/ucla-biostat-203b/2025winter/main/slides/01-intro/intro.qmd), [html](../slides/01-intro/intro.html)\], Linux basics \[slides: [qmd](https://raw.githubusercontent.com/ucla-biostat-203b/2025winter/main/slides/02-linux/linux.qmd), [html](../slides/02-linux/linux.html)\], lab 1 (R, RStudio, Quarto, SSH) \[slides: [qmd](https://raw.githubusercontent.com/ucla-biostat-203b/2025winter/main/labs/lab01/lab01.qmd), [html](../labs/lab01/lab01.html)\] | HW1 \[qmd: [qmd](https://raw.githubusercontent.com/ucla-biostat-203b/2025winter/main/hw/hw1/hw1.qmd), [html](../hw/hw1/hw1.html)\] |   
 |   | Sun, 1/12 | 1pm-4:20pm | CHS 43-105 | reproducible research, Git/GitHub, lab 2 (homework) | |   
 | 2 | Thu, 1/16 | 5pm-7:30pm | [Zoom](https://ucla.zoom.us/j/92818013711) | Docker, lab 3 (Docker) | |   
-| 3 | Thu, 1/23 | 5pm-7:30pm | [Zoom](https://ucla.zoom.us/j/92818013711) | data ingestion and tidying | |    
+| 3 | Thu, 1/23 | 5pm-7:30pm | [Zoom](https://ucla.zoom.us/j/92818013711) | data ingestion and tidying \[slides: [qmd](https://raw.githubusercontent.com/ucla-biostat-203b/2025winter/main/slides/05-tidy/tidy.qmd), [html](../slides/05-tidy/tidy.html)\] | |    
 | 4 | Thu, 1/30 | 5pm-7:30pm | [Zoom](https://ucla.zoom.us/j/92818013711) | data transformation with dplyr, data visualization with ggplot2 | HW2 |    
 | 5 | Sat, 2/8 | 1pm-4:20pm | CHS 33-105 | date and time | HW3 |     
 |   | Sun, 2/9 | 1pm-4:20pm | CHS 33-105 | strings and regex, web scraping | |    

@@ -330,6 +330,9 @@ By default DataFrames.jl limits the number of rows and columns when displaying a
 
 - Create a tibble with two columns.
 ```{r}
+# for reproducibility
+set.seed(203)
+
 df <- tibble(
   x = runif(5),
   y = rnorm(5)
@@ -379,6 +382,9 @@ df %>% .[c("x", "y")]
 
 - Create a tibble with two columns.
 ```{python}
+# for reproducibility
+np.random.seed(203)
+
 df = pd.DataFrame({
   'x': np.random.rand(5), 
   'y': np.random.randn(5)
@@ -410,6 +416,10 @@ df.iloc[:, [0, 1]]
 
 - Create a DataFrame with two columns.
 ```{julia}
+# for reproducibility
+using Random
+Random.seed!(203)
+
 df = DataFrame(x = rand(5), y = randn(5))
 ```
 
