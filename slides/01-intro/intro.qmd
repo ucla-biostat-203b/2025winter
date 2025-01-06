@@ -116,6 +116,6 @@ If time permits, I'll add some Python code in the lectures.
 
 ## More (free) UCLA resources for learning data science
 
-- IDRE workshops: <https://idre.ucla.edu/calendar>
+- IDRE workshops: <https://oarc.ucla.edu/events>
 
 - QCBio workshops: <https://qcb.ucla.edu/collaboratory/workshops/>
