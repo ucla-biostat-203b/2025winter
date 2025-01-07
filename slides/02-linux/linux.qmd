@@ -23,29 +23,18 @@ Display machine information for reproducibility:
 sessionInfo()
 ```
 
+## Survey
+
+<iframe src="https://app.sli.do/event/nzpNoMSd3HE3aVqXkb7GvF" height="100%" width="100%" frameBorder="0" style="min-height: 560px;" allow="clipboard-write" title="Slido"></iframe>
+
 ## Preface
 
-- This html is rendered from `linux.qmd` on Linux Ubuntu 22.04 (jammy).  
+- This html is rendered from `linux.qmd` on Linux Ubuntu 24.04 (Noble Numbat).  
     - Mac users can render `linux.qmd` directly. Some tools such as `tree` and `locate` need to be installed (follow the error messages). 
     
-    - Windows users need to install `WSL` (Windows Subsystem for Linux) or `Git for Windows` (Git Bash) to render `linux.qmd`  to render `linux.qmd` using Ubuntu. Some tools such as `tree` and `locate` need to be installed (follow the error messages).
+    - Windows users need to install `WSL` (Windows Subsystem for Linux) or `Git for Windows` (Git Bash) to render `linux.qmd`. Some tools such as `tree` and `locate` need to be installed (follow the error messages).
     
     - Both Mac and Windows users can also use Docker to render `linux.qmd` within a Ubuntu container. Details in Lab 3.
-
-::: {.callout-tip}
-
-### Set Bash engine in Windows
-
-Windows Git Bash users need to set bash engine to `Git Bash`:
-```{r, eval = Sys.info()['sysname'] == "Windows"}
-# only on Windows Git Bash
-knitr::opts_chunk$set(engine.path = list(
-  bash = "C:\\Program\ Files\\Git\\bin\\bash.exe"
-))
-```
-or similarly to WSL.
-
-:::  
 
 ::: {.callout-tip}
 
@@ -78,7 +67,7 @@ Linux is _the_ most common platform for scientific computing and deployment of d
 
 - UCLA Hoffman2 cluster runs CentOS 7.9.2009 (as of 2025-01-01).
 
-- MacOS was originally derived from Unix/Linux (Darwin kernel). It is POSIX compliant. Most shell commands we review here apply to MacOS terminal as well. 
+- macOS was originally derived from Unix/Linux (Darwin kernel). It is POSIX compliant. Most shell commands we review here apply to macOS terminal as well. 
 
     Windows/DOS, unfortunately, is a totally different breed.
 
@@ -93,7 +82,7 @@ echo $OSTYPE
 cat /etc/*-release
 ```
 
-- Show distribution/version on MacOS:
+- Show distribution/version on macOS:
 ```{bash, eval = Sys.info()['sysname'] == "Darwin"}
 # only on Mac terminal
 sw_vers -productVersion
@@ -112,7 +101,7 @@ system_profiler SPSoftwareDataType
 
 - Most commonly used shells include `bash`, `csh`, `tcsh`, `zsh`, etc.
 
-- The default shell in MacOS changed from `bash` to `zsh` since MacOS v10.15 circa 2019.
+- The default shell in macOS changed from `bash` to `zsh` since macOS Catalina v10.15 circa 2019.
 
 - Sometimes a command and a script does not run simply because it's written for another shell.
 
@@ -123,7 +112,7 @@ system_profiler SPSoftwareDataType
 echo $SHELL
 ```
 
-- List available shells (on Linux or MacOS):
+- List available shells (on Linux or macOS):
 ```{bash, eval = Sys.info()['sysname'] != "Windows"}
 cat /etc/shells
 ```
@@ -422,7 +411,7 @@ sed 's/CentOS/RHEL/' linux.qmd | grep RHEL
 
 - `awk` is a filter and report writer.
 
-- First let's display the content of the file `/etc/passwd` (this file only exists in Linux and MacOS):
+- First let's display the content of the file `/etc/passwd` (this file only exists in Linux and macOS):
 ```{bash, eval = Sys.info()['sysname'] != "Windows"}
 cat /etc/passwd
 ```
@@ -706,7 +695,7 @@ scp [USERNAME]@[IP_ADDRESS]:/[PATH_TO_FILE] [PATH_TO_LOCAL_FOLDER]
 
 - Linux/Unix uses an `LF` character only. 
 
-- MacOS X also uses a single `LF` character. But old Mac OS used a single `CR` character for line breaks. 
+- macOS X also uses a single `LF` character. But old macOS used a single `CR` character for line breaks. 
 
 - If transferred in binary mode (bit by bit) between OSs, a text file could look a mess. 
 
@@ -817,7 +806,7 @@ Rscript runSim.R n=100
 
 - `nohup` command in Linux runs program(s) immune to hangups and writes output to `nohup.out` by default. Logging out will _not_ kill the process; we can log in later to check status and results.
 
-- `nohup` is POSIX standard thus available on Linux and MacOS.
+- `nohup` is POSIX standard thus available on Linux and macOS.
 
 - Run `runSim.R` in background and writes output to `nohup.out`:
 ```{bash, eval = Sys.info()['sysname'] != "Windows"}
