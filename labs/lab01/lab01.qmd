@@ -1,0 +1,285 @@
+---
+title: "Lab 1: R, RStudio, Quarto, Git, SSH Keys, and Reproducing Course Materials"
+subtitle: Biostat 203B
+author: "Dr. Hua Zhou @ UCLA"
+date: today
+format:
+  html:
+    theme: cosmo
+    embed-resources: true
+    number-sections: true
+    toc: true
+    toc-depth: 4
+    toc-location: left
+    code-fold: false
+    link-external-icon: true
+    link-external-newwindow: true
+comments:
+  hypothesis: true    
+knitr:
+  opts_chunk: 
+    echo: true
+    fig.align: 'center'
+---
+
+This tutorial goes through the process of installing the software environment (R, Quarto, RStudio, Git, SSH) for reproducing 203B course materials.
+
+# R, Quarto, and RStudio
+
+- Download and install R v4.4.2 or later at <https://cran.rstudio.com>. 
+
+::: {.panel-tabset}
+
+## Mac
+
+Mac users be aware that `R-x.x.x-arm64.pkg` is for Apple Silicon CPUs (M1/M2/M3) and `R-x.x.x-x86_64.pkg` is for Intel CPUs.
+
+## Windows
+
+Windows users also need to install the Rtools.
+
+:::
+
+- Download and install Quarto CLI v1.6.40 or later at <https://quarto.org/docs/get-started/>. 
+
+- Download and install RStudio Desktop v2024.12 or later at <https://posit.co/download/rstudio-desktop/> 
+
+::: {.callout-tip}
+## Enable GitHub Copilot in RStudio
+
+You will thank me for this suggestion. First [enable GitHub Copilot](https://docs.github.com/en/copilot/quickstart) in your GitHub account (Student Developer Pack). Then in RStudio Desktop, go to `Tools` -> `Global Options...` -> `Copilot` -> `Enable GitHub Copilot` -> `Apply`.
+:::
+
+# Terminal and Bash shell
+
+::: {.panel-tabset}
+
+## Mac
+ 
+- Open the `Terminal` app. You can find `Terminal` from `LaunchPad` -> `Other`, or from `Spotlight Search` (type `Terminal`). For convenience, you can pin the Terminal program to the Dock.   
+
+- Check that current shell is Bash   
+```{bash}
+#| eval: false
+echo $SHELL
+```
+
+- The default `zsh` shell on MacOS is mostly compatible with the Bash shell, and can be used interchangeably for this course. If necessary, you can change default shell to Bash by the following command in Terminal. Then close the Terminal window and reopen it.
+```{bash}
+#| eval: false
+chsh -s /bin/bash
+```
+
+## Windows WSL (recommended)
+
+Our first lectures and homework depend heavily on Linux. It is recommended to install the WSL (Windows Subsystem for Linux) program, which is a complete Linux solution for Windows users. 
+
+- Install WSL2 following [instructions](https://learn.microsoft.com/en-us/windows/wsl/install).
+
+- A standalone Ubuntu system (v22.04 Jammy) is available after WSL installation. Look for icon ![Ubuntu](https://assets.ubuntu.com/v1/ce518a18-CoF-2022_solid+O.svg){width=25}.
+
+- WSL is a full Linux system. It has its own Linux file system, separate from the Windows file system. The user home is at `/home/[USERNAME]` within the Linux file system. 
+
+    - Within WSL, it is easy to access the files in Windows file system, which is mounted at `/mnt/c` on WSL. For example, the file `/c/Users/[USERNAME]/file` in Windows is available within WSL at `/mnt/c/Users/[USERNAME]/file`. 
+    
+    - Within Windows, it is easy to access the files in the WSL file system from the Linux tab in File Explorer. 
+
+- For Homework 1 (extensive Linux exercises), it is recommended to use _RStudio Server_ within WSL. Follow the instructions [here](https://posit.co/download/rstudio-server/) (choose Ubuntu 22) to install R (v4.3.2 at time of writing) and RStudio Server on WSL2 Ubuntu v22.04.
+
+- Install Quarto CLI on WSL2 Ubuntu:
+```{bash}
+#| eval: false
+wget https://github.com/quarto-dev/quarto-cli/releases/download/v1.6.40/quarto-1.6.40-linux-amd64.deb
+sudo gdebi quarto-1.6.40-linux-amd64.deb
+```
+
+- In Windows, point your browser to <http://localhost:8787> to access RStudio Server. The default username and the password is the same as your Ubuntu login credential.
+
+::: {.callout-tip}
+Occasionally we need to lunch, restart, or stop RStudio Server on WSL2 Ubuntu. The Bash commands are
+```{bash}
+#| eval: false
+sudo rstudio-server start
+sudo rstudio-server restart
+sudo rstudio-server stop
+```
+:::
+
+## Windows Git Bash (less recommended)
+
+- Download and install [`Git for Windows`](https://gitforwindows.org/) v2.47 or later. Accept the default settings during the installation process.
+
+- `Git Bash` program is available as a component of `Git for Windows`. It provides a basic Bash shell and packages many commonly used Linux programs. 
+
+- Instruct RStudio to use `Git Bash` as terminal: `Tools` -> `Global Options...` -> `Terminal` -> `New terminals open with` -> `Git Bash`.
+
+- Note that `Git Bash` is not a Linux system. It's a Windows program that emulates a Bash shell, but lacks many Linux commands. `Git Bash` does not have a separate Linux file system. It piggybacks on the Windows file system, thus cannot do Linux-style file permission control. The user home of `Git Bash` is same as the user home on Windows, e.g., `/c/Users/[USERNAME]`.
+
+:::
+
+
+# Git and GitHub
+
+- Check whether `git` command is available in Terminal. 
+
+::: {.panel-tabset}
+
+## Mac
+
+If `git` is not available, follow the [instructions](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) `Installing on macOS` section to install it.
+
+## Windows
+
+`git` is included in either `Git Bash` or WSL Ubuntu.
+
+:::
+
+# SSH and keys
+
+## SSH client
+
+- SSH client should be available in Terminal (Mac Terminal, Windows Git Bash, or Windows WSL) by default. 
+    
+- In Terminal, the command to connect to a Linux machine is
+```{bash}
+#| eval: false
+ssh [USERNAME]@[IP_ADDRESS]
+```
+Replace `[USERNAME]` in the command by your actual user name on the Linux machine you are connecting to. If you cannot connect, you may not have an account. For example, to connect to **my** account on the Hoffman2 cluster at UCLA
+```{bash}
+#| eval: false
+ssh huazhou@hoffman2.idre.ucla.edu
+```
+
+## SSH keys
+
+- First check whether you already have keys on your local machine. If you don't have `~/.ssh` folder, that means you have never used SSH before.
+```{bash}
+#| eval: false
+ls -al ~/.ssh
+```
+
+- If no SSH keys yet, generate a pair of RSA keys
+    - Method 1: Use RStudio to generate keys. `Tools` -> `Global Options...` -> `Git/SVN` -> `Create SSH Key`. 
+    - Method 2: Generate keys on Terminal, following the [instructions in lecture notes](https://ucla-biostat-203b.github.io/2025winter/slides/02-linux/linux.html#steps-to-generate-keys).  
+    
+    Using either method, make sure keys are in the default location `~/.ssh/`
+
+::: {.callout-tip}
+
+Make sure the permission for the key files are correct. 
+
+::: {.panel-tabset}
+
+## Mac
+
+- The permission for the `~/.ssh` folder should be `700 (drwx------)`. 
+
+- The permission for the private key `~/.ssh/id_rsa` should be `600 (-rw-------)`. 
+
+- The permission for the public key `~/.ssh/id_rsa.pub` should be `644 (-rw-r--r--)`.
+
+## Windows WSL
+
+- The permission for the `~/.ssh` folder should be `700 (drwx------)`. 
+
+- The permission for the private key `~/.ssh/id_rsa` should be `600 (-rw-------)`. 
+
+- The permission for the public key `~/.ssh/id_rsa.pub` should be `644 (-rw-r--r--)`.
+
+## Windows Git Bash
+
+- The permission for the `~/.ssh` folder can be `755 (drwxr-xr-x)`. 
+
+- The permission for the private key `~/.ssh/id_rsa` can be `644 (-rw-r--r--)`. 
+
+- The permission for the public key `~/.ssh/id_rsa.pub` can be `644 (-rw-r--r--)`.
+
+:::
+
+:::
+
+- Upload the public SSH key to [GitHub.com](https://github.com): Click the user Avatar on top right corner -> `Settings` -> `SSH and GPG keys` -> `New SSH key`. 
+
+
+::: {.callout-tip}
+In your local machine terminal, you may copy the public key to the clipboard by following command.
+
+::: {.panel-tabset}
+
+## Mac
+
+```{bash}
+#| eval: false
+pbcopy ~/.ssh/id_rsa.pub
+```
+
+## Windows Git Bash
+
+```{bash}
+#| eval: false
+clip < ~/.ssh/id_rsa.pub
+```
+
+## Linux GUI
+
+If the `xclip` and `xsel` are installed, then we can use
+```{bash}
+#| eval: false
+xclip -selection clipboard ~/.ssh/id_rsa.pub
+```
+
+:::
+:::
+
+- On local machine, instruct RStudio to use the public key just generated: `Tools` -> `Global Options...` -> `Git/SVN` -> `SSH key:`.
+
+- After setting up SSH key, you can `git push` your local commits to GitHub repo seamlessly without passwords. 
+
+# Obtain and reproduce course materials
+
+::: {.panel-tabset}
+
+### Terminal
+
+- In Terminal (Mac Terminal, Windows Git Bash, or Windows WSL), you can `git clone` a copy of course materials by
+```{bash}
+#| eval: false
+git clone https://github.com/ucla-biostat-203b/2025winter.git ~/203b-lecture
+```
+This command clones the GitHub repository to a folder called `203b-lecture` under your home directory. You can clone multiple copies to different locations on the same machine if you want. Since this GitHub repository is frequently updated, we frequently sync the local copy on your computer with the repository on GitHub by running
+```{bash}
+#| eval: false
+git pull
+```
+within the `203b-lecture` folder.
+
+- Navigate to the `203b-lecture` folder, double click the `2025winter.Rproj` file to open the project in RStudio. Within RStudio, you can navigate to the `slides` folder to open and render `qmd` files. 
+
+### RStudio
+
+::: {.callout-tip}
+Alternatively, you can also use RStudio to git clone the `biostat-203b-2024-winter` repository to your local machine: `File` -> `New Project...` -> `Version Control` -> `Git` -> input `Repository URL:`, `Project directory name:` 203b-lecture.
+:::
+
+- In RStudio, navigate to the `slides` folder, open and render `qmd` files.
+
+:::
+
+# Docker and Hoffman2
+
+There are more ways to run the course materials.
+
+::: {.panel-tabset}
+
+### Docker
+
+You can use Docker to run the course materials on your local machine. See [Lab 3](https://ucla-biostat-203b.github.io/2025winter/labs/lab03/lab03.html) for instructions.
+
+### Hoffman2
+
+You can also use Hoffman2 cluster at UCLA to run the course materials. See [Hoffman2 documentation](https://www.hoffman2.idre.ucla.edu/Using-H2/Software/Software.html#rstudio-server) for instructions.
+
+Please note this RStudio Server container image lacks many tools such as SSH and Quarto. You need to install them by yourself.
+
+:::
