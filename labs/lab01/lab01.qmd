@@ -42,13 +42,25 @@ Windows users also need to install the Rtools.
 
 - Download and install Quarto CLI v1.6.40 or later at <https://quarto.org/docs/get-started/>. 
 
-- Download and install RStudio Desktop v2024.12 or later at <https://posit.co/download/rstudio-desktop/> 
+- Download and install RStudio Desktop v2024.12 or later at <https://posit.co/download/rstudio-desktop/>.
 
 ::: {.callout-tip}
 ## Enable GitHub Copilot in RStudio
 
-You will thank me for this suggestion. First [enable GitHub Copilot](https://docs.github.com/en/copilot/quickstart) in your GitHub account (Student Developer Pack). Then in RStudio Desktop, go to `Tools` -> `Global Options...` -> `Copilot` -> `Enable GitHub Copilot` -> `Apply`.
+You will thank me for this suggestion. First [enable GitHub Copilot](https://docs.github.com/en/copilot/quickstart) in your GitHub account (Student Developer Pack). It may take a couple of days for GitHub to verify your student status. Then in RStudio Desktop, go to `Tools` -> `Global Options...` -> `Copilot` -> `Enable GitHub Copilot` -> `Apply`.
 :::
+
+::: {.callout-tip}
+## Big data practice
+
+In RStudio Desktop, go to `Tools` -> `Global Options...` -> `General` -> `Basic` tab -> Untick `Restore .RData into workspace at startup:` and set `Save workspace to .RData on exit:` to `Never`.
+
+<p align="center">
+  <img src="rstudio_global_options.png" alt="RStudio Global Options" width="50%"/>
+</p>
+
+:::
+
 
 # Terminal and Bash shell
 
@@ -74,9 +86,9 @@ chsh -s /bin/bash
 
 Our first lectures and homework depend heavily on Linux. It is recommended to install the WSL (Windows Subsystem for Linux) program, which is a complete Linux solution for Windows users. 
 
-- Install WSL2 following [instructions](https://learn.microsoft.com/en-us/windows/wsl/install).
+- Install WSL2 and create a user account and password for the newly installed Ubuntu following [instructions](https://learn.microsoft.com/en-us/windows/wsl/install).
 
-- A standalone Ubuntu system (v22.04 Jammy) is available after WSL installation. Look for icon ![Ubuntu](https://assets.ubuntu.com/v1/ce518a18-CoF-2022_solid+O.svg){width=25}.
+- A standalone Ubuntu system (v24.04 Noble) is available after WSL installation. Look for icon ![Ubuntu](https://assets.ubuntu.com/v1/82818827-CoF_white.svg){width=25}.
 
 - WSL is a full Linux system. It has its own Linux file system, separate from the Windows file system. The user home is at `/home/[USERNAME]` within the Linux file system. 
 
@@ -84,7 +96,7 @@ Our first lectures and homework depend heavily on Linux. It is recommended to in
     
     - Within Windows, it is easy to access the files in the WSL file system from the Linux tab in File Explorer. 
 
-- For Homework 1 (extensive Linux exercises), it is recommended to use _RStudio Server_ within WSL. Follow the instructions [here](https://posit.co/download/rstudio-server/) (choose Ubuntu 22) to install R (v4.3.2 at time of writing) and RStudio Server on WSL2 Ubuntu v22.04.
+- For Homework 1 (extensive Linux exercises), it is recommended to use _RStudio Server_ within WSL. Follow the instructions [here](https://posit.co/download/rstudio-server/) (choose Ubuntu 24) to install R (v4.4.2 at time of writing) and RStudio Server on WSL2 Ubuntu v24.04.
 
 - Install Quarto CLI on WSL2 Ubuntu:
 ```{bash}
@@ -240,12 +252,20 @@ xclip -selection clipboard ~/.ssh/id_rsa.pub
 
 ::: {.panel-tabset}
 
+### RStudio
+
+::: {.callout-tip}
+Alternatively, you can also use RStudio to git clone the `biostat-203b-2025-winter` repository to your local machine: `File` -> `New Project...` -> `Version Control` -> `Git` -> input `Repository URL:`, `Project directory name:` 203b-lecture.
+:::
+
+- In RStudio, navigate to the `slides` folder, open and render `qmd` files.
+
 ### Terminal
 
-- In Terminal (Mac Terminal, Windows Git Bash, or Windows WSL), you can `git clone` a copy of course materials by
+- In Terminal (Mac Terminal, Windows WSL, or Windows Git Bash), you can `git clone` a copy of course materials by
 ```{bash}
 #| eval: false
-git clone https://github.com/ucla-biostat-203b/2025winter.git ~/203b-lecture
+git clone git@github.com:ucla-biostat-203b/2025winter.git ~/203b-lecture
 ```
 This command clones the GitHub repository to a folder called `203b-lecture` under your home directory. You can clone multiple copies to different locations on the same machine if you want. Since this GitHub repository is frequently updated, we frequently sync the local copy on your computer with the repository on GitHub by running
 ```{bash}
@@ -256,13 +276,7 @@ within the `203b-lecture` folder.
 
 - Navigate to the `203b-lecture` folder, double click the `2025winter.Rproj` file to open the project in RStudio. Within RStudio, you can navigate to the `slides` folder to open and render `qmd` files. 
 
-### RStudio
-
-::: {.callout-tip}
-Alternatively, you can also use RStudio to git clone the `biostat-203b-2024-winter` repository to your local machine: `File` -> `New Project...` -> `Version Control` -> `Git` -> input `Repository URL:`, `Project directory name:` 203b-lecture.
-:::
-
-- In RStudio, navigate to the `slides` folder, open and render `qmd` files.
+- The first time you install R packages in Ubuntu, there might be lots of error messages. This is due to lack of some system dependencies. Read the error messages carefully, and install the missing Ubuntu packages, e.g., `sudo apt-get install build-essential` to install the GCC compiler.
 
 :::
 
