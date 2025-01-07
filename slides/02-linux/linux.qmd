@@ -23,7 +23,11 @@ Display machine information for reproducibility:
 sessionInfo()
 ```
 
-## Survey
+## Survey: Getting to Know My Computer
+
+First let us familiarize ourselves with some computer terminologies. 
+
+[Slido](https://app.sli.do/event/nzpNoMSd3HE3aVqXkb7GvF)
 
 <iframe src="https://app.sli.do/event/nzpNoMSd3HE3aVqXkb7GvF" height="100%" width="100%" frameBorder="0" style="min-height: 560px;" allow="clipboard-write" title="Slido"></iframe>
 
