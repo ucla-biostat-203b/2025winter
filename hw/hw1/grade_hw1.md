@@ -10,13 +10,13 @@
 
 -   Is the report prepared as a dynamic document (Quarto) for better reproducibility?
 
--   Is the report clear (whole sentences, typos, grammar)? Do readers have a clear idea what's going on and how results are produced by just reading the report? Take some points off if the solutions are too succinct to grasp, or there are too many typos/grammar. 
+-   Is the report clear (whole sentences, typos, grammar)? Do readers have a clear idea what's going on and how results are produced by just reading the report? Take points off if the solutions are too succinct to grasp, or there are too many typos/grammar. 
 
 ### Completeness, correctness and efficiency of solution: ??/70
 
 - Q1 (??/10)
 
-	Is the GitHub.com repository name set up correctly? If using name other than `biostat-203b-2024-winter`, take 5 points off.
+	Is the GitHub.com repository name set up correctly? If using name other than `biostat-203b-2025-winter`, take 5 points off.
 
 - Q2 (??/20)
 
@@ -28,7 +28,7 @@
 
 	Q3.1, if the gz files are ever decompressed or copied in the solutions, take 5 points off.
 	
-	For Q3.5 and Q3.6, should skip the header when finding the unique values of each variable. Take 5 points of if not done so.
+	For Q3.5-7, should skip the header when finding the unique values of each variable. Take 5 points of if not done so.
 
 - Q4 (??/10)
 
@@ -48,7 +48,7 @@
 
 -   Are the folders (`hw1`, `hw2`, ...) created correctly? 
   
--   Do not put a lot auxiliary files into version control. 
+-   Do not put auxiliary files into version control. If files such as `.Rhistory`, `.RData`, `.Rproj.user`, `.DS_Store`, etc., are in Git, take 5 points off.
 
 -   If those gz data files or `pg42671` are in Git, take 5 points off.
 
@@ -62,9 +62,9 @@
 
 For bash commands, only enforce the 80-character rule. Take 2 pts off for each violation. 
 
--   [Rule 2.5](https://style.tidyverse.org/syntax.html#long-lines) The maximum line length is 80 characters. Long URLs and strings are exceptions.  
+-   [Rule 2.6](https://style.tidyverse.org/syntax.html#long-function-calls) The maximum line length is 80 characters. Long URLs and strings are exceptions.  
 
--   [Rule 2.4.1](https://style.tidyverse.org/syntax.html#indenting) When indenting your code, use two spaces.  
+-   [Rule 2.5.1](https://style.tidyverse.org/syntax.html#indenting) When indenting your code, use two spaces.  
 
 -   [Rule 2.2.4](https://style.tidyverse.org/syntax.html#infix-operators) Place spaces around all infix operators (=, +, -, &lt;-, etc.).  
 

@@ -103,3 +103,7 @@ git push --tags
 # Homework 1
 
 - Demo Q2, Q3.1, Q3.2, Q5, Q6.
+
+# Grading guideline
+
+Your submission will graded according to this [guideline](https://github.com/ucla-biostat-203b/2025winter/blob/main/hw/hw1/grade_hw1.md).
