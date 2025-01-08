@@ -1,0 +1,47 @@
+# https://rocker-project.org/images/versioned/rstudio.html
+# ubuntu: 24.04 (noble), R: 4.4.2, Python: 3.12, Julia: 1.11.2
+FROM rocker/geospatial:4.4.2
+
+# Enable GitHub Copilot in RStudio Server
+RUN echo "copilot-enabled=1" >> /etc/rstudio/rsession.conf
+
+# Jupyter
+RUN /rocker_scripts/install_jupyter.sh
+
+# Copy a script that we will use to correct permissions after running certain commands
+COPY fix-permissions /usr/local/bin/fix-permissions
+RUN chmod a+rx /usr/local/bin/fix-permissions
+
+# Ubuntu packages
+COPY install_ubuntu_pkgs.sh /rocker_scripts/install_ubuntu_pkgs.sh
+COPY ubuntu_pkgs.txt /rocker_scripts/ubuntu_pkgs.txt
+RUN /rocker_scripts/install_ubuntu_pkgs.sh
+
+# Python packages
+ENV NB_GID=staff
+COPY install_python_pkgs.sh /rocker_scripts/install_python_pkgs.sh
+COPY python_pkgs.txt /rocker_scripts/python_pkgs.txt
+RUN /rocker_scripts/install_python_pkgs.sh
+
+# R packages
+# for reticulate
+ENV RETICULATE_PYTHON_ENV=/opt/venv
+COPY install_r_pkgs.sh /rocker_scripts/install_r_pkgs.sh
+COPY r_pkgs.txt /rocker_scripts/r_pkgs.txt
+RUN /rocker_scripts/install_r_pkgs.sh
+
+# Julia and packages
+# ENV JULIAUP_DEPOT_PATH=/opt
+ENV JULIA_DEPOT_PATH=/opt/julia
+ENV JULIA_PKGDIR=/opt/julia
+ENV JULIA_VERSION=1.11.2
+ENV JUPYTER=/opt/venv/bin/jupyter
+RUN /rocker_scripts/install_julia.sh
+COPY install_julia_pkgs.sh /rocker_scripts/install_julia_pkgs.sh
+COPY julia_pkgs.txt /rocker_scripts/julia_pkgs.txt
+RUN /rocker_scripts/install_julia_pkgs.sh
+
+# Fix permissions of JULIA_DEPOT_PATH and JULIA_PKGDIR
+RUN fix-permissions ${JULIA_DEPOT_PATH}
+RUN fix-permissions ${JULIA_PKGDIR}
+
