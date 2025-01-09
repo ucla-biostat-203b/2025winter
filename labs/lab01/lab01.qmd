@@ -51,7 +51,7 @@ You will thank me for this suggestion. First [enable GitHub Copilot](https://doc
 :::
 
 ::: {.callout-tip}
-## Big data practice
+## Big Data Practice
 
 In RStudio Desktop, go to `Tools` -> `Global Options...` -> `General` -> `Basic` tab -> Untick `Restore .RData into workspace at startup:` and set `Save workspace to .RData on exit:` to `Never`.
 
@@ -255,10 +255,12 @@ xclip -selection clipboard ~/.ssh/id_rsa.pub
 ### RStudio
 
 ::: {.callout-tip}
-Alternatively, you can also use RStudio to git clone the `biostat-203b-2025-winter` repository to your local machine: `File` -> `New Project...` -> `Version Control` -> `Git` -> input `Repository URL:`, `Project directory name:` 203b-lecture.
-:::
 
-- In RStudio, navigate to the `slides` folder, open and render `qmd` files.
+You can use RStudio to git clone the `biostat-203b-2025-winter` repository to your local machine: `File` -> `New Project...` -> `Version Control` -> `Git` -> input `Repository URL:`, `Project directory name:` 203b-lecture.
+
+In RStudio, navigate to the `slides` folder, open and render `qmd` files.
+
+:::
 
 ### Terminal
 
