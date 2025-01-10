@@ -30,7 +30,7 @@ Office hours:
 - Lec 1
 
     Tomoki Okuno <tomokiokuno0528@ucla.edu>  
-    Office hours: Wed 5pm-6pm @ [Zoom](https://ucla.zoom.us/j/92818013711) (or in-person?), Fri 2pm-3pm @ [Zoom](https://ucla.zoom.us/j/92818013711)  
+    Office hours: Wed 5pm-6pm @ [Zoom](https://ucla.zoom.us/j/92818013711) (or in-person?), Fri 3pm-4pm @ [Zoom](https://ucla.zoom.us/j/92818013711)  
 
 - Lec 82 (MDSH)
 
