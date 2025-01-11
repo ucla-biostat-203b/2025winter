@@ -29,12 +29,10 @@ First let us familiarize ourselves with some computer terminologies.
 
 [Slido](https://app.sli.do/event/nzpNoMSd3HE3aVqXkb7GvF)
 
-<iframe src="https://app.sli.do/event/nzpNoMSd3HE3aVqXkb7GvF" height="100%" width="100%" frameBorder="0" style="min-height: 560px;" allow="clipboard-write" title="Slido"></iframe>
-
 ## Preface
 
 - This html is rendered from `linux.qmd` on Linux Ubuntu 24.04 (Noble Numbat).  
-    - Mac users can render `linux.qmd` directly. Some tools such as `tree` and `locate` need to be installed (follow the error messages). 
+    - Mac users can render `linux.qmd` directly. Some tools such as `tree` and `plocate` need to be installed (follow the error messages). 
     
     - Windows users need to install `WSL` (Windows Subsystem for Linux) or `Git for Windows` (Git Bash) to render `linux.qmd`. Some tools such as `tree` and `locate` need to be installed (follow the error messages).
     
@@ -122,7 +120,7 @@ cat /etc/shells
 ```
 
 - Change to another shell:
-```{{bash}}
+```{bash}
 #| eval: false
 exec bash -l
 ```
@@ -547,13 +545,13 @@ ps -fu $USER
 ### Kill processes
 
 - Kill process with PID=1001:
-``` {{bash}}
+```{bash}
 #| eval: false
 kill 1001
 ```
 
 - Kill all R processes.
-``` {{bash}}
+```{bash}
 #| eval: false
 killall -r R
 ```
@@ -561,7 +559,7 @@ killall -r R
 ### `top`
 
 - `top` prints realtime process information (very useful).
-```{{bash}}
+```{bash}
 #| eval: false
 top
 ```
@@ -579,12 +577,12 @@ top
 SSH (secure shell) is the dominant cryptographic network protocol for secure network connection via an insecure network.
 
 - On Linux or Mac Terminal, access a Linux machine by
-```{{bash}}
+```{bash}
 #| eval: false
 ssh [USERNAME]@[IP_ADDRESS]
 ```
 Replace above `[USERNAME]` by your account user name on the Linux machine and `[IP_ADDRESS]` by the machine's ip address. For example, to connect to the Hoffman2 cluster at UCLA
-```{{bash}}
+```{bash}
 #| eval: false
 ssh huazhou@hoffman2.idre.ucla.edu
 ```
