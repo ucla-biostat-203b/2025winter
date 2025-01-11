@@ -37,7 +37,7 @@ Recommended readings:
 | 2 | Thu, 1/16 | 5pm-7:30pm | [Zoom](https://ucla.zoom.us/j/92818013711) | Docker, lab 3 (Docker) \[slides: [qmd](https://raw.githubusercontent.com/ucla-biostat-203b/2025winter/main/labs/lab03/lab03.qmd), [html](../labs/lab03/lab03.html)\] | |   
 | 3 | Thu, 1/23 | 5pm-7:30pm | [Zoom](https://ucla.zoom.us/j/92818013711) | data ingestion and tidying \[slides: [qmd](https://raw.githubusercontent.com/ucla-biostat-203b/2025winter/main/slides/05-tidy/tidy.qmd), [html](../slides/05-tidy/tidy.html)\] | |    
 | 4 | Thu, 1/30 | 5pm-7:30pm | [Zoom](https://ucla.zoom.us/j/92818013711) | data transformation with dplyr \[slides: [qmd](https://raw.githubusercontent.com/ucla-biostat-203b/2025winter/main/slides/07-dplyr/dplyr.qmd), [html](../slides/07-dplyr/dplyr.html)\], data visualization with ggplot2 \[slides: [qmd](https://raw.githubusercontent.com/ucla-biostat-203b/2025winter/main/slides/06-vis/ggplot2.qmd), [html](../slides/06-vis/ggplot2.html)\] | HW2 |    
-| 5 | Sat, 2/8 | 1pm-4:20pm | CHS 33-105 | date and time | HW3 |     
+| 5 | Sat, 2/8 | 1pm-4:20pm | CHS 33-105 | date and time \[slides: [qmd](https://raw.githubusercontent.com/ucla-biostat-203b/2025winter/main/slides/08-datetime/datetime.qmd), [html](../slides/08-datetime/datetime.html)\] | HW3 |     
 |   | Sun, 2/9 | 1pm-4:20pm | CHS 33-105 | strings and regex, web scraping | |    
 | 6 | Thu, 2/13 | 5pm-7:30pm | [Zoom](https://ucla.zoom.us/j/92818013711) | lab 4 (HW3), databases intro., dbplyr | |  
 | 7 | Thu, 2/20 | 5pm-7:30pm | [Zoom](https://ucla.zoom.us/j/92818013711) | shiny for interactive graphics |  |    
