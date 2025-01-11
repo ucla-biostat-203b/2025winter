@@ -22,8 +22,8 @@ Phone: (310)794-7835\
 Email: <huazhou@ucla.edu>  
 
 Office hours:  
-- Lec 1: Tue, Thu 2pm-2:45pm @ CHS 21-254A  
-- Lec 82 (MDSH): Sat (on non-teaching weekends) 4pm-6pm @ [Zoom](https://ucla.zoom.us/j/92818013711)  
+- Lec 1: Tue, Thu 2pm-2:45pm @ CHS 21-254A (the hour before each lecture)  
+- Lec 82 (MDSH): the hour after each lecture @ [Zoom](https://ucla.zoom.us/j/92818013711) or the class room  
 
 ## TA team
 
@@ -35,10 +35,10 @@ Office hours:
 - Lec 82 (MDSH)
 
     Parsa Jamshidian <jamshidian@ucla.edu>  
-    Office hours: TBD
+    Office hours: Wed 11am-12pm, Fri 1pm-2pm @ [Zoom](https://ucla.zoom.us/j/92818013711)  
 
     Bowen Zhang <bowenzhangstats@ucla.edu>  
-    Office hours: TBD
+    Office hours: Mon 7:30m-8:30pm, Fri 4pm-5pm @ [Zoom](https://ucla.zoom.us/j/92818013711)  
 
 ## Course Description
 
