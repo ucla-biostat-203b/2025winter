@@ -49,14 +49,22 @@ Your homework solution should always read MIMIC data from `~/mimic`. This is cri
 ls -l ~/mimic/
 ```
 
+::: {.callout-tip}
+## Access Box folder on Windows from WSL 
+
+If you put MIMIC data in Box and access it using `Box Drive` program on Windows, you'll find that you cannot read that folder from WSL. You can resolve it following instructions in this [issue](https://github.com/microsoft/WSL/issues/4310) or simply copy MIMIC data from Box to your regular Windows file system.
+
+:::
+
 # Start with homework 1
 
 On your local machine: 
 
 - Clone the repository, create `develop` branch, where your work on solutions. Useful git commands:
 
-```{{bash}}
+```{bash}
 #| eval: false
+
 # clone the project
 git clone git@github.com:[USERNAME]/biostat-203b-2025-winter.git
 # enter project folder
@@ -82,8 +90,9 @@ git push
 
 - Submit and tag HW1 solution to the `main` branch. Useful git commands:
 
-```{{bash}}
+```{bash}
 #| eval: false
+
 # which branch are we in?
 git branch
 # change to the main branch
