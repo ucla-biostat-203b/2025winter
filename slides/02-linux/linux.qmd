@@ -69,7 +69,7 @@ Linux is _the_ most common platform for scientific computing and deployment of d
 
 - UCLA Hoffman2 cluster runs CentOS 7.9.2009 (as of 2025-01-01).
 
-- macOS was originally derived from Unix/Linux (Darwin kernel). It is POSIX compliant. Most shell commands we review here apply to macOS terminal as well. 
+- [macOS](https://en.wikipedia.org/wiki/MacOS_version_history#/media/File:Unix_history-simple.svg) was originally derived from Unix (Darwin kernel). It is POSIX compliant. Most shell commands we review here apply to macOS terminal as well. 
 
     Windows/DOS, unfortunately, is a totally different breed.
 
@@ -621,7 +621,7 @@ ssh huazhou@hoffman2.idre.ucla.edu
 
 - Messages from your computer to server is signed with your private key (digital signatures) and can be verified by anyone who has your public key (authentication).
 
-### Steps to generate keys (on ternminal)
+### Steps to generate keys (on terminal)
 
 - On Linux, Mac, Windows Git Bash, or Windows WSL, to generate a key pair:
 ```{bash}
