@@ -37,7 +37,7 @@ Recommended readings:
 | 3 | 1/21 data ingestion and tidying \[slides: [qmd](https://raw.githubusercontent.com/ucla-biostat-203b/2025winter/main/slides/05-tidy/tidy.qmd), [html](../slides/05-tidy/tidy.html)\] | 1/23 data transformation with dplyr \[slides: [qmd](https://raw.githubusercontent.com/ucla-biostat-203b/2025winter/main/slides/07-dplyr/dplyr.qmd), [html](../slides/07-dplyr/dplyr.html)\] | HW2 |  
 | 4 | 1/28 data visualization with ggplot2 \[slides: [qmd](https://raw.githubusercontent.com/ucla-biostat-203b/2025winter/main/slides/06-vis/ggplot2.qmd), [html](../slides/06-vis/ggplot2.html)\] | 1/30 date and time \[slides: [qmd](https://raw.githubusercontent.com/ucla-biostat-203b/2025winter/main/slides/08-datetime/datetime.qmd), [html](../slides/08-datetime/datetime.html)\] |  |     
 | 5 | 2/4 strings and regex \[slides: [qmd](https://raw.githubusercontent.com/ucla-biostat-203b/2025winter/main/slides/09-strings/stringr.qmd), [html](../slides/09-strings/stringr.html)\] | 2/6 web scraping | HW3 |    
-| 6 | 2/11 lab 4 (hw3), databases intro., dbplyr | 2/13 shiny for interactive graphics | |    
+| 6 | 2/11 lab 4 (hw3), databases intro., dbplyr | 2/13 shiny for interactive graphics \[slides: [qmd](https://raw.githubusercontent.com/ucla-biostat-203b/2025winter/main/slides/11-shiny/shiny.qmd), [html](../slides/11-shiny/shiny.html)\] | |    
 | 7 | 2/18 statistical learning (intro.) | 2/20 machine learning workflow using tidymodels | HW4 |   
 | 8 | 2/25 neural network (intro.) | 2/27 neural network (practice) |  |    
 | 9 | 3/4 cloud computing with GCP | 3/6 cluster computing at UCLA \[[tutorial](https://github.com/chris-german/Hoffman2Tutorials)\] | HW5 |   
