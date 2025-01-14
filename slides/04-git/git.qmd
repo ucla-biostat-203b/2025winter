@@ -264,4 +264,6 @@ git clone git@github.com:[USERNAME]/biostat-203b-2025-winter.git
 
 ## [Comic relief](https://happygitwithr.com/comic-relief)
 
+If you run into Git troubles, read this page first before going to Google, Slack, and office hours.
+
 <https://ohshitgit.com/>
