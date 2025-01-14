@@ -23,22 +23,22 @@ Email: <huazhou@ucla.edu>
 
 Office hours:  
 - Lec 1: Tue, Thu 2pm-2:45pm @ CHS 21-254A (the hour before each lecture)  
-- Lec 82 (MDSH): the hour after each lecture @ [Zoom](https://ucla.zoom.us/j/92818013711) or the class room  
+- Lec 82 (MDSH): the hour after each lecture @ [Zoom](https://ucla.zoom.us/j/92818013711) or the class room, and timely help on Slack  
 
 ## TA team
 
 - Lec 1
 
     Tomoki Okuno <tomokiokuno0528@ucla.edu>  
-    Office hours: Wed 5pm-6pm @ [Zoom](https://ucla.zoom.us/j/92818013711) (or in-person?), Fri 3pm-4pm @ [Zoom](https://ucla.zoom.us/j/92818013711)  
+    Office hours: Wed 5pm-6pm @ [Zoom](https://ucla.zoom.us/j/92818013711), Fri 3pm-4pm @ [Zoom](https://ucla.zoom.us/j/92818013711), and timely help on Slack   
 
 - Lec 82 (MDSH)
 
     Parsa Jamshidian <jamshidian@ucla.edu>  
-    Office hours: Wed 11am-12pm, Fri 1pm-2pm @ [Zoom](https://ucla.zoom.us/j/92818013711)  
+    Office hours: Wed 11am-12pm, Fri 1pm-2pm @ [Zoom](https://ucla.zoom.us/j/92818013711), and timely help on Slack  
 
     Bowen Zhang <bowenzhangstats@ucla.edu>  
-    Office hours: Mon 7:30m-8:30pm, Fri 4pm-5pm @ [Zoom](https://ucla.zoom.us/j/92818013711)  
+    Office hours: Mon 7:30m-8:30pm, Fri 4pm-5pm @ [Zoom](https://ucla.zoom.us/j/92818013711), and timely help on Slack  
 
 ## Course Description
 
