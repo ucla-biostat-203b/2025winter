@@ -6,7 +6,7 @@
 
 -   Is the homework submitted (git tag time) before deadline? Take 10 pts off per day for late submission.  
 
--   Is the final report in a human readable format html? 
+-   Is the final report in a human readable format html and pdf? 
 
 -   Is the report prepared as a dynamic document (Quarto) for better reproducibility?
 
