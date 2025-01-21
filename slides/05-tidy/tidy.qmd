@@ -1544,3 +1544,7 @@ read_csv(
   mutate(age = parse_number(if_else(age == "five", "5", age))) |>
   print(width = Inf)
 ```
+
+## Cheat sheet  
+
+[Posit cheat sheet](https://rstudio.github.io/cheatsheets/html/tidyr.html) is extremely helpful.
