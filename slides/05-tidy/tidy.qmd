@@ -56,7 +56,7 @@ We will spend the next few weeks studying some R packages for typical data scien
 
 * Interactive data visualization by Shiny.
 
-* Interface with databases, e.g., SQL, DuckDB, Google BigQuery, and Apache Spark.
+* Interface with databases, e.g., MySQL, DuckDB, Google BigQuery, and Apache Spark.
 
 * String and text data manipulation. 
 
@@ -985,9 +985,11 @@ XLSX.readdata("datasets.xlsx", "mtcars!C1:E4")
 
 ### Other types of data
 
-- **haven** reads SPSS, Stata, and SAS files.
-
 - **DBI**, along with a database specific backend (e.g. **RMySQL**, **RSQLite**, **RPostgreSQL** etc) allows us to run SQL queries against a database and return a data frame. Later we will use DBI to work with databases.
+
+- **googlesheets4** reads from and writes to Google Sheets.
+
+- **haven** reads SPSS, Stata, and SAS files.
 
 - **jsonlite** reads json files.
 
@@ -997,7 +999,7 @@ XLSX.readdata("datasets.xlsx", "mtcars!C1:E4")
 
 ### Cheat sheet  
 
-[Posit readr cheat sheet](https://rstudio.github.io/cheatsheets/html/data-transformation.html) is extremely helpful. 
+[Posit readr cheat sheet](https://rstudio.github.io/cheatsheets/html/data-import.html) is extremely helpful. 
 
 ## Tidy data | r4ds2e chapter 5
 
@@ -1544,7 +1546,3 @@ read_csv(
   mutate(age = parse_number(if_else(age == "five", "5", age))) |>
   print(width = Inf)
 ```
-
-## Cheat sheet  
-
-[Posit cheat sheet](https://rstudio.github.io/cheatsheets/html/tidyr.html) is extremely helpful.
