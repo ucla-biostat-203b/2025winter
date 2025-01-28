@@ -1171,20 +1171,13 @@ rename!(table4b, Dict(:y1999 => Symbol("1999"), :y2000 => Symbol("2000")))
 :::
 
 
-### pivot_longer (gathering)
+### pivot_longer (gathering) - wide format to long format
 
 <p align="center">
 <img src="./tidy-9.png" height="300">
 </p>
 
-- `gather` (deprecated command) columns into a new pair of variables.
-```{r}
-# Deprecated command
-table4a |>
-  gather(`1999`, `2000`, key = "year", value = "cases")
-```
-    
-- `gather` function has been superseded by `pivot_longer`.
+- `pivot_longer` supersedes the old `gather` function.
 
 - In Python, it's called `melt`. In Julia, it's called `stack`.
 
@@ -1193,6 +1186,12 @@ table4a |>
 #### R
 
 ```{r}
+# before pivot
+table4a
+```
+
+```{r}
+# after pivot
 table4a |>
   pivot_longer(c(`1999`, `2000`), names_to = "year", values_to = "cases")
 ```
@@ -1218,19 +1217,25 @@ tidy4a = @pipe stack(table4a, ["1999", "2000"]) |>
 
 :::
 
-- We can gather table4b too and then join them
+- We can `pivot_longer` table4b too and then join them
 
 ::: {.panel-tabset}
 
 #### R
 
 ```{r}
+# before pivot
+table4a
+table4b
+```
+
+```{r}
+# pivot_longer
 tidy4a <- table4a |> 
   pivot_longer(c(`1999`, `2000`), names_to = "year", values_to = "cases")
-# gather(`1999`, `2000`, key = "year", value = "cases")
 tidy4b <- table4b |> 
   pivot_longer(c(`1999`, `2000`), names_to = "year", values_to = "population")
-# gather(`1999`, `2000`, key = "year", value = "population")
+# join
 left_join(tidy4a, tidy4b)
 ```
 
@@ -1265,7 +1270,7 @@ leftjoin!(tidy4a, tidy4b, on = [:country, :year])
 
 :::
 
-### pivot_wider (spreading)
+### pivot_wider (spreading) - long format to wide format
 
 <p align="center">
 <img src="./tidy-8.png" height="300">
@@ -1277,7 +1282,7 @@ table2 |>
   spread(key = type, value = count)
 ```
 
-- `spread` function has been superseded by `pivot_wider`.
+- `pivot_wider` supersedes the old `spread` function.
 
 - In Python, it's called `pivot`. In Julia, it's called `unstack`.
 
@@ -1308,7 +1313,9 @@ unstack(table2, :type, :count)
 
 :::
 
-### Separating
+### Split cells
+
+- Separate each cell in a column into several columns.
 
 <p align="center">
 <img src="./tidy-17.png" height="300">
@@ -1323,19 +1330,19 @@ unstack(table2, :type, :count)
 table3
 # After separation
 table3 |> 
-  separate(rate, into = c("cases", "population"))
+  separate(rate, sep = "/", into = c("cases", "population"))
 ```
 
 - Separate into numeric values:
 ```{r}
 table3 |> 
-  separate(rate, into = c("cases", "population"), convert = TRUE)
+  separate(rate, sep = "/", into = c("cases", "population"), convert = TRUE)
 ```
 
 - Separate at a fixed position:
 ```{r}
 table3 |> 
-  separate(year, into = c("century", "year"), sep = 2)
+  separate(year, sep = 2, into = c("century", "year"))
 ```
 
 #### Python
@@ -1360,6 +1367,16 @@ insertcols!(table3, ([:cases, :population] .=> invert(split.(table3.rate, "/")))
 ```
 
 :::
+
+- Separate each cell in a column into several rows.
+
+```{r}
+# Before separation
+table3
+# After separation
+table3 |> 
+  separate_longer_delim(rate, delim = "/")
+```
 
 ### Unite
 
@@ -1482,6 +1499,38 @@ dropmissing(df)
 
 :::
 
+- To fill in NA's using the previous (LOCF) or next value.
+
+::: {.panel-tabset}
+
+#### R
+
+```{r}
+df |> fill(.direction = "down")
+```
+
+#### Python
+
+#### Julia
+
+:::
+
+- To replace NA's by a specific value.
+
+::: {.panel-tabset}
+
+#### R
+
+```{r}
+df |> replace_na(list(year = 1999, cases = 500))
+```
+
+#### Python
+
+#### Julia
+
+:::
+
 - To remove duplicate rows
 
 ::: {.panel-tabset}
@@ -1489,8 +1538,7 @@ dropmissing(df)
 #### R
 
 ```{r}
-df |>
-  distinct()
+df |> distinct()
 ```
 
 #### Python
@@ -1516,7 +1564,7 @@ unique(df)
 
 - Are missing value parsed correctly? 
 
-- Are data types parsed correctly? `chr` vs `fct`. data time. NA vs NaN.
+- Are data types parsed correctly? `chr` vs `fct`, data time, NA vs NaN.
 
 - Are there any duplicated rows?
 
