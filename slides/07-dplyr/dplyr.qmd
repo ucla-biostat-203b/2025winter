@@ -362,16 +362,16 @@ slice_tail(flights, n = 5)
 
 - Top `n` rows with the highest values:
 ```{r}
-# deprecated: top_n(flights, 5, wt = time_hour)
+# deprecated: top_n(flights, 5, wt = distance)
 # This function is quick
-slice_max(flights, n = 5, order_by = time_hour) |>
+slice_max(flights, n = 5, order_by = distance) |>
   print(width = Inf)
 ```
 
 - Bottom `n` rows with lowest values:
 ```{r}
-# same as slice_max(flights, n = 5, order_by = desc(time_hour))
-slice_min(flights, n = 5, order_by = time_hour) |>
+# same as slice_max(flights, n = 5, order_by = desc(distance))
+slice_min(flights, n = 5, order_by = distance) |>
   print(width = Inf)
 ```
 
@@ -396,12 +396,12 @@ flights.tail(5)
 
 - Top `n` rows with the highest values:
 ```{python}
-flights.nlargest(n = 5, columns = 'time_hour')
+flights.nlargest(n = 5, columns = 'distance')
 ```
 
 - Bottom `n` rows with lowest values:
 ```{python}
-flights.nsmallest(n = 5, columns = 'time_hour')
+flights.nsmallest(n = 5, columns = 'distance')
 ```
 I don't think `nlargest` and `nsmallest` apply to grouped DataFrame. But I may be wrong.
 
@@ -424,12 +424,12 @@ last(flights, 5)
 
 - Top `n` rows with the highest values:
 ```{julia}
-last(sort(flights, [:time_hour]), 5)
+last(sort(flights, [:distance]), 5)
 ```
 
 - Bottom `n` rows with lowest values:
 ```{julia}
-first(sort(flights, [:time_hour]), 5)
+first(sort(flights, [:distance]), 5)
 ```
 
 :::
@@ -462,6 +462,7 @@ arrange(flights, desc(arr_delay)) |>
 flights |>
   group_by(month) |>
   arrange(desc(arr_delay), .by_group = TRUE) |>
+  distinct(month, .keep_all = TRUE) |>
   print(width = Inf)
 ```
 
@@ -583,6 +584,10 @@ flights[:, "year"] # make a copy!
 
 ```{r}
 select(flights, year:day)
+```
+
+```{r}
+select(flights, day:year)
 ```
 
 #### Python
