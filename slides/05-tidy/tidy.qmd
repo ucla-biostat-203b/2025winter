@@ -1436,7 +1436,7 @@ table5
 
 :::
 
-### Drop missing values and/or duplicate rows
+### Missing values and/or duplicate rows
 
 - Here's a tibble with some missing values and duplicated rows:
 
@@ -1506,7 +1506,7 @@ dropmissing(df)
 #### R
 
 ```{r}
-df |> fill(.direction = "down")
+df |> fill(c(year, cases), .direction = "down")
 ```
 
 #### Python
@@ -1558,7 +1558,7 @@ unique(df)
 
 ### Cheat sheet  
 
-[Posit readr cheat sheet](https://rstudio.github.io/cheatsheets/html/tidyr.html) is extremely helpful. 
+[Posit tidyr cheat sheet](https://rstudio.github.io/cheatsheets/html/tidyr.html) is extremely helpful. 
 
 ## Some practical decisions when ingesting data
 

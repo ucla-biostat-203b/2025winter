@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Dr. Hua Zhou @ UCLA">
-<meta name="dcterms.date" content="2025-01-28">
+<meta name="dcterms.date" content="2025-01-29">
 
 <title>Import and Tidy Data</title>
 <style>
@@ -3126,7 +3126,7 @@ vertical-align: -.125em;
   <li><a href="#pivot_wider-spreading---long-format-to-wide-format" id="toc-pivot_wider-spreading---long-format-to-wide-format" class="nav-link" data-scroll-target="#pivot_wider-spreading---long-format-to-wide-format"><span class="header-section-number">5.3</span> pivot_wider (spreading) - long format to wide format</a></li>
   <li><a href="#split-cells" id="toc-split-cells" class="nav-link" data-scroll-target="#split-cells"><span class="header-section-number">5.4</span> Split cells</a></li>
   <li><a href="#unite" id="toc-unite" class="nav-link" data-scroll-target="#unite"><span class="header-section-number">5.5</span> Unite</a></li>
-  <li><a href="#drop-missing-values-andor-duplicate-rows" id="toc-drop-missing-values-andor-duplicate-rows" class="nav-link" data-scroll-target="#drop-missing-values-andor-duplicate-rows"><span class="header-section-number">5.6</span> Drop missing values and/or duplicate rows</a></li>
+  <li><a href="#missing-values-andor-duplicate-rows" id="toc-missing-values-andor-duplicate-rows" class="nav-link" data-scroll-target="#missing-values-andor-duplicate-rows"><span class="header-section-number">5.6</span> Missing values and/or duplicate rows</a></li>
   <li><a href="#cheat-sheet-1" id="toc-cheat-sheet-1" class="nav-link" data-scroll-target="#cheat-sheet-1"><span class="header-section-number">5.7</span> Cheat sheet</a></li>
   </ul></li>
   <li><a href="#some-practical-decisions-when-ingesting-data" id="toc-some-practical-decisions-when-ingesting-data" class="nav-link" data-scroll-target="#some-practical-decisions-when-ingesting-data"><span class="header-section-number">6</span> Some practical decisions when ingesting data</a></li>
@@ -3157,7 +3157,7 @@ vertical-align: -.125em;
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 28, 2025</p>
+      <p class="date">January 29, 2025</p>
     </div>
   </div>
   
@@ -6555,8 +6555,8 @@ China       1999  212258  1272915272
 </div>
 </div>
 </section>
-<section id="drop-missing-values-andor-duplicate-rows" class="level3" data-number="5.6">
-<h3 data-number="5.6" class="anchored" data-anchor-id="drop-missing-values-andor-duplicate-rows"><span class="header-section-number">5.6</span> Drop missing values and/or duplicate rows</h3>
+<section id="missing-values-andor-duplicate-rows" class="level3" data-number="5.6">
+<h3 data-number="5.6" class="anchored" data-anchor-id="missing-values-andor-duplicate-rows"><span class="header-section-number">5.6</span> Missing values and/or duplicate rows</h3>
 <ul>
 <li>Here’s a tibble with some missing values and duplicated rows:</li>
 </ul>
@@ -6670,15 +6670,15 @@ China       1999  212258  1272915272
 <div class="tab-content">
 <div id="tabset-22-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-22-1-tab">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb345"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb345-1"><a href="#cb345-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">|&gt;</span> <span class="fu">fill</span>(<span class="at">.direction =</span> <span class="st">&quot;down&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb345"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb345-1"><a href="#cb345-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">|&gt;</span> <span class="fu">fill</span>(<span class="fu">c</span>(year, cases), <span class="at">.direction =</span> <span class="st">&quot;down&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 3
   country      year  cases
   &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt;
 1 Afghanistan  1999    745
 2 Afghanistan  1999    745
-3 Brazil       1999     NA
-4 China          NA 212258</code></pre>
+3 Brazil       1999    745
+4 China        1999 212258</code></pre>
 </div>
 </div>
 </div>
@@ -6767,7 +6767,7 @@ China       1999  212258  1272915272
 </section>
 <section id="cheat-sheet-1" class="level3" data-number="5.7">
 <h3 data-number="5.7" class="anchored" data-anchor-id="cheat-sheet-1"><span class="header-section-number">5.7</span> Cheat sheet</h3>
-<p><a href="https://rstudio.github.io/cheatsheets/html/tidyr.html">Posit readr cheat sheet</a> is extremely helpful.</p>
+<p><a href="https://rstudio.github.io/cheatsheets/html/tidyr.html">Posit tidyr cheat sheet</a> is extremely helpful.</p>
 </section>
 </section>
 <section id="some-practical-decisions-when-ingesting-data" class="level2" data-number="6">
