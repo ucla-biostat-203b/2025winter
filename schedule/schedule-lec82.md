@@ -40,8 +40,8 @@ Recommended readings:
 | 5 | Sat, [2/8](https://ucla-biostat-203b.github.io/2025winter/biostat203bwinter2025lec82/2025/02/08/lec82.html) | 1pm-4:20pm | CHS 33-105 | date and time \[slides: [qmd](https://raw.githubusercontent.com/ucla-biostat-203b/2025winter/main/slides/08-datetime/datetime.qmd), [html](../slides/08-datetime/datetime.html)\] | HW3 \[qmd: [qmd](https://raw.githubusercontent.com/ucla-biostat-203b/2025winter/main/hw/hw3/hw3.qmd), [html](../hw/hw3/hw3.html)\] |     
 |   | Sun, 2/9 | 1pm-4:20pm | CHS 33-105 | strings and regex \[slides: [qmd](https://raw.githubusercontent.com/ucla-biostat-203b/2025winter/main/slides/09-strings/stringr.qmd), [html](../slides/09-strings/stringr.html)\], web scraping | |    
 | 6 | Thu, 2/13 | 5pm-7:30pm | [Zoom](https://ucla.zoom.us/j/92818013711) | lab 4 (HW3), databases intro., dbplyr | |  
-| 7 | Thu, 2/20 | 5pm-7:30pm | [Zoom](https://ucla.zoom.us/j/92818013711) | shiny for interactive graphics \[slides: [qmd](https://raw.githubusercontent.com/ucla-biostat-203b/2025winter/main/slides/11-shiny/shiny.qmd), [html](../slides/11-shiny/shiny.html)\] |  |    
-| 8 | Thu, 2/27 | 5pm-7:30pm | [Zoom](https://ucla.zoom.us/j/92818013711) | statistical learning (intro.), machine learning workflow using tidymodels | HW4 |   
+| 7 | Thu, 2/20 | 5pm-7:30pm | [Zoom](https://ucla.zoom.us/j/92818013711) | shiny for interactive graphics \[slides: [qmd](https://raw.githubusercontent.com/ucla-biostat-203b/2025winter/main/slides/11-shiny/shiny.qmd), [html](../slides/11-shiny/shiny.html)\] | HW4 |    
+| 8 | Thu, 2/27 | 5pm-7:30pm | [Zoom](https://ucla.zoom.us/j/92818013711) | statistical learning (intro.), machine learning workflow using tidymodels | |   
 | 9 | Sat, 3/8 | 1pm-4:20pm | CHS 73-105A | neural network (intro.), neural network (practice) | HW5 |    
 |   | Sun, 3/9 | 1pm-4:20pm | CHS 73-105A | cloud computing with GCP, cluster computing at UCLA \[[tutorial](https://github.com/chris-german/Hoffman2Tutorials)\] | |   
 | 10 | Thu, 3/13 | 5pm-7:30pm | [Zoom](https://ucla.zoom.us/j/92818013711) | R programming (benchmark, debug, profile), Rcpp, parallel computing, R package | |   
