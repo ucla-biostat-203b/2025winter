@@ -1,0 +1,61 @@
+---
+title: "Lab 4: Using RStudio on Hoffman2"
+subtitle: Biostat 203B
+author: "Dr. Hua Zhou @ UCLA"
+date: today
+format:
+  html:
+    theme: cosmo
+    embed-resources: true
+    number-sections: true
+    toc: true
+    toc-depth: 4
+    toc-location: left
+    code-fold: false
+    link-external-icon: true
+    link-external-newwindow: true
+comments:
+  hypothesis: true    
+knitr:
+  opts_chunk: 
+    echo: true
+    fig.align: 'center'
+---
+
+This tutorial demonstrates using the RStudio Server on UCLA Hoffman2 cluster to work on 203B homework. 
+
+## Step 1: SSH keys
+
+Set up SSH keys connection of your computer with Hoffman2 cluster. You can run the following Bash command to copy your public key to the Hoffman2 cluster.
+```{bash}
+#| eval: false
+ssh-copy-id [USERNAME]@hoffman2.idre.ucla.edu
+```
+
+## Step 2: MIMIC data
+
+Copy mimic data over to Hoffman2. 
+```{bash}
+#| eval: false
+scp -r ~/mimic [USERNAME]@hoffman2.idre.ucla.edu:~
+```
+
+::: {.callout-tip}
+## Scratch Space
+
+Each user has a quota of 20GB on Hoffman2. For data larger than 20GB, you can use the scratch space (up to 2TB) `$SCRATCH`, which is guaranteed of 14 days of availability.
+:::
+
+## Step 3: RStudio Desktop
+
+Follow the [instructions](https://www.hoffman2.idre.ucla.edu/Using-H2/Software/Software.html#rstudio-ide) to use RStudio Desktop on Hoffman2.
+
+::: {.callout-tip}
+## Scratch Space
+
+macOS users need to install the XQuartz program before connecting to Hoffman2 with `ssh -X`. Windows WSL users can use `ssh -X` directly.
+:::
+
+## Step 3: RStudio Server
+
+You can also use the Apptainer on Hoffman2 to run RStudio Server, following [instructions](https://www.hoffman2.idre.ucla.edu/Using-H2/Software/Software.html#rstudio-server), but I found the image lacking many tools such as SSH and Quarto. 
