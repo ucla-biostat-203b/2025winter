@@ -1,6 +1,6 @@
 *XXX XXX*
 
-### Overall Grade: ???/260
+### Overall Grade: ???/280
 
 ### Quality of report: ??/10
 
@@ -12,13 +12,13 @@
 
 -   Is the report clear (whole sentences, typos, grammar)? Do readers have a clear idea what's going on and how results are produced by just reading the report? Take some points off if the solutions are too succinct to grasp, or there are too many typos/grammar. 
 
-### Completeness, correctness and efficiency of solution: ??/210
+### Completeness, correctness and efficiency of solution: ??/230
 
-- Q1 (??/30)
+- Q1 (??/50)
   
-    - Q1.1 (??/15) 
+    - Q1.1 (??/25) 
     
-    - Q1.2 (??/15)
+    - Q1.2 (??/25)
 
 - Q2 (??/10)
 
