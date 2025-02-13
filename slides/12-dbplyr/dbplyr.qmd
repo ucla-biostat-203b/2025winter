@@ -1,0 +1,325 @@
+---
+title: "Working with Databases - Part II"
+subtitle: Biostat 203B
+author: "Dr. Hua Zhou @ UCLA"
+date: today
+format:
+  html:
+    theme: cosmo
+    embed-resources: true
+    number-sections: true
+    toc: true
+    toc-depth: 4
+    toc-location: left
+    code-fold: false
+    link-external-icon: true
+    link-external-newwindow: true
+comments:
+  hypothesis: true
+---
+
+## Introduction
+
+In this lecture we will demonstrate:
+
+- Import data from bigish csv files (MIMIC-IV).
+
+- Deposit data into an SQLite database.
+
+- Query SQLite database. 
+
+- Transform in database and plot in R.
+
+- Comparing SQLite, DuckDB, and BigQuery.
+
+## Machine information
+
+Display machine information for reproducibility.
+```{r}
+sessionInfo()
+```
+Load necessary R packages
+```{r}
+library(bigrquery)
+library(tidyverse)
+library(DBI)
+library(RSQLite)
+library(dbplyr)
+library(duckdb)
+library(arrow)
+```
+
+```{bash}
+# display version of SQLite
+sqlite3 --version
+```
+
+## CSV file
+
+Code in this lecture assumes that the MIMIC-IV data is available at `~/mimic`.
+
+Display content of MIMIC-IV data folder:
+```{bash}
+ls -l ~/mimic
+```
+
+## Read CSVs and deposit to an SQLite database
+
+Here, we will import only one csv file `icustays.csv.gz` for demonstration purpose. Motivated students can write a Bash script for loading all MIMIC-IV data files into a SQLite database and contribute to <https://github.com/MIT-LCP/mimic-code>.
+
+Create an empty database file `mimiciv.sqlite`:
+```{bash}
+# bash command
+touch mimiciv.sqlite
+```
+
+Deposit the `icu/icustatys.csv.gz` file:
+```{bash}
+# bash command
+# delete icustays table if exists
+sqlite3 mimiciv.sqlite 'DROP TABLE IF EXISTS icustays;'
+```
+Create an empty `icustays` table with data types. Because SQLite does not support date-time data type (<https://www.sqlite.org/datatype3.html>), we store `intime` and `outtime` as TEXT.
+```{bash}
+# bash command
+sqlite3 mimiciv.sqlite 'CREATE TABLE icustays (
+  subject_id INTEGER,
+  hadm_id INTEGER,
+  stay_id INTEGER,
+  first_careunit TEXT,
+  last_careunit TEXT,
+  intime TEXT,
+  outtime TEXT,
+  los REAL
+  )'
+```
+
+```{bash}
+# bash command
+zcat < ~/mimic/icu/icustays.csv.gz | \
+  tail -n +2 | \
+  sqlite3 mimiciv.sqlite -csv '.import /dev/stdin icustays'
+```
+
+## Read data from database
+
+Connect to the database `mimiciv.sqlite` and list the tables:
+```{r}
+con <- dbConnect(
+  RSQLite::SQLite(), 
+  dbname = "./mimiciv.sqlite"
+)
+dbListTables(con)
+```
+
+Read the table `icustays`:
+```{r}
+icustays_tble <- tbl(con, "icustays") |> 
+  print(width = Inf)
+```
+How many rows?
+```{r}
+icustays_tble |> 
+  summarise(n = n()) |>
+  show_query() |>
+  print()
+```
+
+## Use dplyr with SQLite
+
+Keep the first ICU stay for each patient:
+```{r}
+icustays_subset <- icustays_tble |>
+  # first ICU stay of each unique `subject_id`
+  group_by(subject_id) |>
+  slice_min(intime) |>
+  ungroup() |>
+  # arrange(intime, .by_group = TRUE) |>
+  # slice_head(n = 1) |>
+  # left_join(icustays_tble, by = c("subject_id", "intime")) |>
+  show_query() |>
+  print(width = Inf)
+```
+
+How many rows in `icustays_subset`?
+```{r}
+icustays_subset |>
+  summarise(n = n()) |>
+  show_query() |>
+  print()
+```
+
+## SQL query
+
+`show_query` usefully shows the SQL query translated from dplyr query.
+```{r}
+class(icustays_subset)
+show_query(icustays_subset)
+```
+
+## Transform in database, plot in R
+
+ggplot will compute the plot in R, but the data transformation is done in the database. Always make sure to do data wrangling (filter, select, group by, summarise) in the database if possible.
+```{r}
+icustays_tble |>
+  group_by(subject_id) |>
+  summarise(n = n()) |>
+  ggplot() +
+  geom_bar(mapping = aes(x = n)) + 
+  labs(x = "# ICU stays of a patient")
+```
+
+## SQL translation
+
+dbplyr package (a dplyr backend for databases) has a function, `translate_sql`, that lets you experiment with how R functions are translated to SQL:
+```{r}
+#| eval: false
+translate_sql(x == 1 & (y < 2 | z > 3))
+translate_sql(x ^ 2 < 10)
+translate_sql(x %% 2 == 10)
+translate_sql(paste(x, y))
+translate_sql(mean(x))
+translate_sql(mean(x, na.rm = TRUE))
+```
+
+## Timings
+
+Let's compare the timings of dplyr (in-memory) and dbplyr (on disk database).
+
+- dplyr using tibble:
+```{r}
+csvfile <- "~/mimic/icu/icustays.csv.gz"
+icustays_tibble <- read_csv(csvfile)
+timing_tibble <-icustays_tibble |>
+    group_by(subject_id) |>
+    summarize(n = n()) |>
+    system.time()
+timing_tibble
+```
+
+- dbplyr using SQLite:
+```{r}
+icustays_sql <- tbl(con, "icustays")
+timing_sql <- icustays_sql |>
+  group_by(subject_id) |>
+  summarize(n = n()) |>
+  system.time()
+timing_sql
+```
+
+SQLite (`r timing_sql[3]` seconds) was much faster than tibble (`r timing_tibble[3]` seconds). But SQLite is disk-based, while the tibble is in memory. Why is the discrepancy?
+
+## Laziness
+
+dplyr/dbplyr uses lazy evaluation as much as possible, particularly when working with non-local backends.
+
+- When building a query, often we don’t want the entire table. We want just enough to check if our query is working.
+
+- Since we would prefer to run one complex query over many simple queries, laziness allows for verbs to be strung together.
+
+- Therefore, by default dbplyr
+
+    - won’t connect and query the database until absolutely necessary (e.g. show output),
+
+    - and unless explicitly told to, will only query a handful of rows to give a sense of what the result will look like
+    
+```{r}
+icustays_sql |>
+  group_by(subject_id) |>
+  summarize(n = n())
+```
+
+## Full query
+
+To force a full query and return a complete table it is necessary to use the `collect` function.
+```{r}
+icustays_sql |>
+  group_by(subject_id) |>
+  summarize(n = n()) |>
+  collect() |>
+  system.time()
+```
+
+## Close connection to database
+
+```{r}
+dbDisconnect(con)
+```
+
+## DuckDB vs SQLite
+
+BTW, as modern data scientists, we should all [start using DuckDB](https://dirk-petersen.medium.com/researchers-please-replace-sqlite-with-duckdb-now-f038044a2702) (<https://duckdb.org/>) instead of SQLite. DuckDB is a modern, embeddable SQL OLAP database management system. It is designed to handle analytical workloads (OLAP) on read-only data. It is based on a column-store architecture and is designed to be very fast to query, highly compressible, and run on modern hardware. It is a great alternative to SQLite for analytical workloads.
+
+## DuckDB vs BigQuery
+
+Let's now compare DuckDB with BigQuery. We will use the MIMIC-IV data for this comparison: calculate the average measurements for 5 vitals: 220045 (heart rate), 220179 (systolic BP), 220180 (diastolic BP), 223761 (respiratory rate), and 220210 (temperature in F).
+```{r}
+open_dataset(
+  sources = "chartevents_pq", 
+  format = "parquet"
+  ) |>
+  # create a virtual table in DuckDB
+  to_duckdb() |>
+  # filter rows
+  filter(itemid %in% c(220045L, 220179L, 220180L, 223761L, 220210L)) |>
+  # group by and count
+  group_by(itemid) |>
+  summarise(mean = mean(valuenum, na.rm = TRUE)) |>
+  # force computation
+  collect() |>
+  # pull item info
+  left_join(
+    read_csv("~/mimic/icu/d_items.csv.gz", show_col_types = FALSE) |> 
+      select(itemid, label),
+    by = "itemid"
+  ) |>
+  arrange(itemid) |>
+  # print results
+  print() |>
+  system.time()
+```
+Achieving this task under 3 seconds is impressive.
+
+How about BigQuery? We use the `bigrquery` package to connect to BigQuery and run the same query. BigQuery is able to achieve this task under 3 seconds. But this may not be fair. BigQuery may cache this particular query if it's been run before.
+```{r}
+# BigQuery authentication using service account token
+bq_auth(path = "biostat-203b-2025-winter-4e58ec6e5579.json")
+```
+
+```{r}
+# Connect to the BigQuery database `biostat-203b-2024-winter.mimic4_v2_2`
+con_bq <- dbConnect(
+    bigrquery::bigquery(),
+    project = "biostat-203b-2025-winter",
+    dataset = "mimiciv_3_1_icu",
+    billing = "biostat-203b-2025-winter"
+)
+
+dbListTables(con_bq)
+```
+```{r}
+tbl(con_bq, "chartevents") |>
+  # filter rows
+  filter(itemid %in% c(220045L, 220179L, 220180L, 223761L, 220210L)) |>
+  # group by and count
+  group_by(itemid) |>
+  summarise(mean = mean(valuenum, na.rm = TRUE)) |>
+  # force computation
+  collect() |>
+  # pull item info
+  left_join(
+    read_csv("~/mimic/icu/d_items.csv.gz", show_col_types = FALSE) |> 
+      select(itemid, label),
+    by = "itemid"
+  ) |>
+  arrange(itemid) |>
+  # print results
+  print() |>
+  system.time()
+```
+
+```{r}
+if (exists("con_bq")) {
+  dbDisconnect(con_bq)
+}
+```
