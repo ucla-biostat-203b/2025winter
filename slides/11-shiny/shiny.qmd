@@ -16,7 +16,7 @@ format:
     link-external-newwindow: true
 comments:
   hypothesis: true    
-runtime: shiny
+# runtime: shiny
 ---
 
 Display machine information for reproducibility.
@@ -35,7 +35,7 @@ sessionInfo()
 
 - Browse the [Gallery](http://shiny.rstudio.com/gallery/) of Shiny apps.
 
-- Josh Katz's [dialect quiz on NYT](https://www.nytimes.com/interactive/2014/upshot/dialect-quiz-map.html).
+- Josh Katz's [dialect quiz on NYT](https://www.nytimes.com/interactive/2014/upshot/dialect-quiz-map.html). [Clip](https://peabodyawards.com/nytimesdialectquiz/)
 
 - [Another good presentation of data](https://research.hackerrank.com/student-developer/2020).
 
