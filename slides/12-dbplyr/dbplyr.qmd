@@ -287,11 +287,11 @@ bq_auth(path = "biostat-203b-2025-winter-4e58ec6e5579.json")
 ```
 
 ```{r}
-# Connect to the BigQuery database `biostat-203b-2024-winter.mimic4_v2_2`
+# Connect to the BigQuery database `biostat-203b-2025-winter.mimiciv_3_1`
 con_bq <- dbConnect(
     bigrquery::bigquery(),
     project = "biostat-203b-2025-winter",
-    dataset = "mimiciv_3_1_icu",
+    dataset = "mimiciv_3_1",
     billing = "biostat-203b-2025-winter"
 )
 
