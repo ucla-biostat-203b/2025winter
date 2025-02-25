@@ -615,6 +615,6 @@ scikit-learn in Python. [link](https://scikit-learn.org/stable/)
 
 #### Julia
 
-Supported models in Julia MLJ ecosystem. [link](https://alan-turing-institute.github.io/MLJ.jl/dev/model_browser/#Model-Browser)
+Supported models in Julia MLJ ecosystem. [link](https://juliaai.github.io/MLJ.jl/stable/model_browser/)
 
 :::
