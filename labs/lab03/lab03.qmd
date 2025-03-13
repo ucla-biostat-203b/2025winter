@@ -83,6 +83,8 @@ Not worked out yet.
 
 ## Run Docker container on cloud (TODO)
 
+In this tutorial, we show how to push the [rocker/rstudio](https://hub.docker.com/r/rocker/rstudio/tags) Docker image to GCR (Google Cloud Registry) and run the Docker container on GCP (Google Cloud Platform).
+
 ### Initial set up to push Docker image to GCR (Google Cloud Registry)
 
 - Install [`Google Cloud CLI`](https://cloud.google.com/sdk/docs/install-sdk) on local machine (laptop or desktop).
@@ -99,17 +101,24 @@ gcloud init
 gcloud auth configure-docker -q
 ```
 
+- Download the Docker image `rocker/rstudio`:
+```{bash}
+#| eval: false
+docker pull --platform linux/amd64 rocker/rstudio
+```
+Why do we pull the `linux/amd64` image?
+
 - List existing Docker images and tag for gcr:
 ```{bash}
 #| eval: false
 docker image list
-docker tag huazhou/ucla-biostat-203b-2025w gcr.io/biostat-203b-2025-winter/ubuntu-rstudio-server
+docker tag rocker/rstudio gcr.io/biostat-203b-2025-winter/rstudio
 ```
 
 - Push the image to gcr:
 ```{bash}
 #| eval: false
-docker push gcr.io/biostat-203b-2025-winter/ubuntu-rstudio-server 
+docker push gcr.io/biostat-203b-2025-winter/rstudio
 ```
 
 ### Run Docker container on GCP
@@ -118,7 +127,7 @@ docker push gcr.io/biostat-203b-2025-winter/ubuntu-rstudio-server
 
 - Create a firewall rule `rstudio-server` that opens the `8787` port and add Network tag `rstudio-server` to the GCE instance.
 
-- Paste the GCR image name `gcr.io/biostat-203b-2025-winter/ubuntu-rstudio-server` to the `Container image` field of the GCE instance.
+- Paste the GCR image name `gcr.io/biostat-203b-2025-winter/rstudio` to the `Container image` field of the GCE instance.
 
 - Input Environment Variables: `PASSWORD: 203b`, `ROOT: true`, and `DISABLE_AUTH: true` to the GCE instance.
 
